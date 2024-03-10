@@ -37,4 +37,4 @@ router.post('/comments', (req, res) => {
 router.delete('/comments/:id', (req, res) => {
     const found = comments.some(comment => comment.id === parseInt(req.params.id));
     if (found) {
-        res.json(
+        res.json(   { msg: `Comment deleted`, comments: comments.filter(comment => comment.id !== parseInt(req.params.id)) });  } else {    res.status(400).json({ msg: `Comment not found` });  }  });   
